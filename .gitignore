@@ -5,6 +5,7 @@ dist
 .tmp
 .sass-cache
 app/bower_components
+bower_components
 
 lib-cov
 *.seed
