@@ -44,10 +44,14 @@ module.exports = function (grunt) {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
-      styles: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'autoprefixer']
+      less: {
+        files: ['<%= yeoman.app %>/styles/{,*/}*.less',],
+        tasks: ['less']
       },
+      // styles: {
+      //   files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
+      //   tasks: ['newer:copy:styles', 'autoprefixer']
+      // },
       gruntfile: {
         files: ['Gruntfile.js']
       },
@@ -58,7 +62,8 @@ module.exports = function (grunt) {
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
-          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%= yeoman.app %>/styles/{,*/}*.less'
         ]
       }
     },
@@ -127,6 +132,31 @@ module.exports = function (grunt) {
           jshintrc: 'test/.jshintrc'
         },
         src: ['test/spec/{,*/}*.js']
+      }
+    },
+
+    less: {
+      options: {
+        paths: ['app/components'],
+        //dumpLineNumbers: true
+      },
+      dist: {
+        files: [{
+          expand: true,     // Enable dynamic expansion.
+          cwd: '<%= yeoman.app %>/styles/',      // Src matches are relative to this path.
+          src: ['**/*.less'], // Actual pattern(s) to match.
+          dest: '.tmp/styles/',   // Destination path prefix.
+          ext: '.css',   // Dest filepaths will have this extension.
+        }],
+      },
+      server: {
+        files: [{
+          expand: true,     // Enable dynamic expansion.
+          cwd: '<%= yeoman.app %>/styles/',      // Src matches are relative to this path.
+          src: ['**/*.less'], // Actual pattern(s) to match.
+          dest: '.tmp/styles/',   // Destination path prefix.
+          ext: '.css',   // Dest filepaths will have this extension.
+        }],
       }
     },
 
@@ -366,6 +396,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'less:server',
       'wiredep',
       'concurrent:server',
       'autoprefixer',
@@ -381,6 +412,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
+    'less',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
@@ -389,6 +421,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'less:dist',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',

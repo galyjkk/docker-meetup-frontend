@@ -1,12 +1,16 @@
 {
   "name": "dockermeetupfrontend",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "imagemin-optipng": "latest"
+  },
   "devDependencies": {
     "grunt": "latest",
     "grunt-autoprefixer": "latest",
     "grunt-concurrent": "latest",
     "grunt-contrib-clean": "latest",
+    "grunt-contrib-coffee": "latest",
+    "grunt-contrib-compass": "latest",
     "grunt-contrib-concat": "latest",
     "grunt-contrib-connect": "latest",
     "grunt-contrib-copy": "latest",
@@ -14,15 +18,17 @@
     "grunt-contrib-htmlmin": "latest",
     "grunt-contrib-imagemin": "latest",
     "grunt-contrib-jshint": "latest",
+    "grunt-contrib-less": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest",
-    "grunt-filerev": "latest",
     "grunt-google-cdn": "latest",
+    "grunt-karma": "latest",
     "grunt-newer": "latest",
     "grunt-ngmin": "latest",
+    "grunt-rev": "latest",
     "grunt-svgmin": "latest",
     "grunt-usemin": "latest",
-    "grunt-wiredep": "latest",
+    "grunt-wiredep": "^1.8.0",
     "jshint-stylish": "latest",
     "load-grunt-tasks": "latest",
     "time-grunt": "latest"

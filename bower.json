@@ -11,7 +11,9 @@
     "angular-sanitize": "latest",
     "angular-animate": "latest",
     "angular-touch": "latest",
-    "angular-route": "latest"
+    "angular-route": "latest",
+    "angular-pusher": "latest",
+    "angular-bootstrap": "latest"
   },
   "devDependencies": {
     "angular-mocks": "latest",
