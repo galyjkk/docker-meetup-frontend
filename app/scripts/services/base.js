@@ -28,9 +28,6 @@ angular.module('dockerMeetupFrontendApp')
 
     this.libraries = [];
 
-    this.temporaryId = 1;
-
-
     /*
      * Broadcast
      */
@@ -44,16 +41,26 @@ angular.module('dockerMeetupFrontendApp')
        * Add library to libraries.
        */
       addLibrary: function(item) {
-        me.temporaryLibrary.id = me.temporaryId;
         me.temporaryLibrary.name = item.name;
         me.temporaryLibrary.isOfficial = item.is_official;
-        // console.log(me.temporaryLibrary);
         me.libraries.splice(me.libraries.length, 0, me.temporaryLibrary);
         console.log(me.libraries);
         me.broadcastAddedLibraries();
-        me.temporaryId = me.temporaryId + 1;
         me.resetTemporaryLibrary();
-        // console.log(me.temporaryId);
+      },
+
+      /*
+       * remove library from libraries.
+       */
+      removeLibrary: function(item) {
+        for (var i = 0; i < me.libraries.length; i++) {
+          if (item.name === me.libraries[i].name) {
+            me.libraries.splice(i, 1);
+            break;
+          };
+        };
+        // console.log(me.libraries);
+        me.broadcastAddedLibraries();
       },
 
     };
