@@ -1,28 +1,34 @@
 <section>
   <div class="container-fluid library-search">
     <i class="fa fa-search"></i>
-    <input type="text" ng-model="selected" placeholder="Search and add libraries" typeahead="image for images in getImage($viewValue)" class="form-control" typeahead-on-select="addLibrary($item)">
+    <input type="text" ng-model="selected" placeholder="Search and add libraries" typeahead="state as state.name for state in states | filter:$viewValue | limitTo:8" class="form-control" typeahead-on-select="addLibrary($item)" autofocus>
+    <!-- typeahead="image for images in getImage($viewValue)"  -->
   </div>
   <div class="library-row">
       <!-- <h2 class="library-row-headline">Added libraries</h2> -->
       <table class="table table-invoice">
         <thead>
         <tr>
-          <th class="library-number">#</th>
-          <th class="library-name">Name</th>
-          <th class="library-version">Version</th>
-          <th class="library-submit">Submit</th>
-          <th class="library-create">Create</th>
-          <th class="library-build">Build</th>
-          <th class="library-deploy">Deploy</th>
-          <th class="library-trash"></th>
+          <th class="library-number row-5">#</th>
+          <th class="library-name row-20">Name</th>
+          <th class="library-official row-14">Official</th>
+          <th class="library-submit row-14">Submit</th>
+          <th class="library-create row-14">Create</th>
+          <th class="library-build row-14">Build</th>
+          <th class="library-deploy row-14">Deploy</th>
+          <th class="library-trash row-5"></th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="library in addedLibraries">
           <td><span>{{ library.id }}</span></td>
           <td><span>{{ library.name }}</span></td>
-          <td><span>{{ library.version }}</span></td>
+          <!-- check is official -->
+          <td>
+            <div class="library-docker-icon" ng-if="library.isOfficial === true">
+              <img ng-src="../images/docker_icon.png">
+            </div>
+          </td>
           <!-- check is submit -->
           <td>
             <div class="library-btn-false" ng-if="library.isSubmit === false">
@@ -59,7 +65,7 @@
               <i class="fa fa-check-circle"></i>
             </div>
           </td>
-          <td class="text-center"><i class="fa fa-trash-o"></i></td>
+          <td class="library-trash-td text-center"><i class="fa fa-trash-o"></i></td>
         </tr>
         </tbody>
       </table>
