@@ -1,3 +1,8 @@
+@import '../../bower_components/bootstrap/less/bootstrap.less';
+@import '../../bower_components/fontawesome/less/font-awesome.less';
+@import 'base.less';
+
+
 /* Space out content a bit */
 body {
   padding-top: 20px;
@@ -13,67 +18,70 @@ body {
 }
 
 /* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
+.container-header {
+  border-bottom: 1px solid #dddddd;
+  text-align: center;
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+  > img {
+    width: 200px;
+  }
+
+  > .container-header-title {
+    text-align: center;
+    color: #394d54;
+    text-shadow: 2px 2px 0 #dddddd,9px 8px 0 rgba(0,0,0,.15);
+    font-weight: 900;
+    font-size: 50px;
+    margin: 20px 0;
+  }
 }
 
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 1000px;
+    padding: 0px;
   }
 }
 .container-narrow > hr {
   margin: 30px 0;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+.main-section {
+  width: 1000px;
+  margin: 0 auto;
+  max-width: 1000px;
+  min-width: 768px;
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
+//table style
+.table-invoice {
+    // margin-top:30px;
+    border-spacing:5px;
+    border-collapse:separate;
 }
-.marketing p + h4 {
-  margin-top: 28px;
+.table-invoice>thead>tr>th {
+    border-bottom:none;
+}
+.table-invoice>tbody>tr>td {
+    border-top:none;
+}
+.table-invoice thead tr th {
+    background:#e8e9f0;
+    border-radius:5px;
+    -webkit-border-radius:5px;
+    vertical-align:middle;
+}
+.table-invoice thead tr th:first-child,.table-invoice tbody tr td:first-child {
+    text-align:center;
+}
+.table-invoice tbody tr td {
+    background:#f5f6f9;
+    border-radius:5px;
+    -webkit-border-radius:5px;
+    vertical-align:middle;
+}
+.table-invoice tbody tr td:last-child {
+    font-size: 125%;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}

@@ -13,7 +13,8 @@
     "angular-touch": "latest",
     "angular-route": "latest",
     "angular-pusher": "latest",
-    "angular-bootstrap": "latest"
+    "angular-bootstrap": "latest",
+    "fontawesome": "latest"
   },
   "devDependencies": {
     "angular-mocks": "latest",

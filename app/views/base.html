@@ -1,0 +1,36 @@
+<section>
+  <div class="container-fluid library-search">
+    <i class="fa fa-search"></i>
+    <input type="text" ng-model="selected" placeholder="Search and add libraries" typeahead="state for state in states | filter:$viewValue " class="form-control" typeahead-on-select="addLibrary($item)">
+  </div>
+  <div class="library-row">
+      <h2 class="library-row-headline">Added libraries</h2>
+      <table class="table table-invoice">
+        <thead>
+        <tr>
+          <th class="library-number">#</th>
+          <th class="library-name">Name</th>
+          <th class="library-version">Version</th>
+          <th class="library-submit">Submit</th>
+          <th class="library-create">Create</th>
+          <th class="library-build">Build</th>
+          <th class="library-deploy">Deploy</th>
+          <th class="library-trash"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="library in addedLibraries">
+          <td><span>{{ library.id }}</span></td>
+          <td><span>{{ library.name }}</span></td>
+          <td><span>{{ library.version }}</span></td>
+          <td><i class="fa fa-circle"></i></td>
+          <td><i class="fa fa-circle"></i></td>
+          <td><i class="fa fa-circle"></i></td>
+          <td><i class="fa fa-circle"></i></td>
+          <td><a href="javascript:void(0);"><i class="fa fa-trash-o"></i></a></td>
+        </tr>
+        </tbody>
+      </table>
+
+  </div>
+</section>
