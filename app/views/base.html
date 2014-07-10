@@ -1,10 +1,10 @@
 <section>
   <div class="container-fluid library-search">
     <i class="fa fa-search"></i>
-    <input type="text" ng-model="selected" placeholder="Search and add libraries" typeahead="state for state in states | filter:$viewValue " class="form-control" typeahead-on-select="addLibrary($item)">
+    <input type="text" ng-model="selected" placeholder="Search and add libraries" typeahead="image for images in getImage($viewValue)" class="form-control" typeahead-on-select="addLibrary($item)">
   </div>
   <div class="library-row">
-      <h2 class="library-row-headline">Added libraries</h2>
+      <!-- <h2 class="library-row-headline">Added libraries</h2> -->
       <table class="table table-invoice">
         <thead>
         <tr>
@@ -23,11 +23,43 @@
           <td><span>{{ library.id }}</span></td>
           <td><span>{{ library.name }}</span></td>
           <td><span>{{ library.version }}</span></td>
-          <td><i class="fa fa-circle"></i></td>
-          <td><i class="fa fa-circle"></i></td>
-          <td><i class="fa fa-circle"></i></td>
-          <td><i class="fa fa-circle"></i></td>
-          <td><a href="javascript:void(0);"><i class="fa fa-trash-o"></i></a></td>
+          <!-- check is submit -->
+          <td>
+            <div class="library-btn-false" ng-if="library.isSubmit === false">
+              <i class="fa fa-circle"></i>
+            </div>
+            <div class="library-btn-true" ng-if="library.isSubmit === true">
+              <i class="fa fa-check-circle"></i>
+            </div>
+          </td>
+          <!-- check is create -->
+          <td>
+            <div class="library-btn-false" ng-if="library.isCreate === false">
+              <i class="fa fa-circle"></i>
+            </div>
+            <div class="library-btn-true" ng-if="library.isCreate === true">
+              <i class="fa fa-check-circle"></i>
+            </div>
+          </td>
+          <!-- check is build -->
+          <td>
+            <div class="library-btn-false" ng-if="library.isBuild === false">
+              <i class="fa fa-circle"></i>
+            </div>
+            <div class="library-btn-true" ng-if="library.isBuild === true">
+              <i class="fa fa-check-circle"></i>
+            </div>
+          </td>
+          <!-- check is deploy -->
+          <td>
+            <div class="library-btn-false" ng-if="library.isDeploy === false">
+              <i class="fa fa-circle"></i>
+            </div>
+            <div class="library-btn-true" ng-if="library.isDeploy === true">
+              <i class="fa fa-check-circle"></i>
+            </div>
+          </td>
+          <td class="text-center"><i class="fa fa-trash-o"></i></td>
         </tr>
         </tbody>
       </table>
